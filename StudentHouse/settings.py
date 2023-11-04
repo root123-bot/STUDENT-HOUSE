@@ -31,9 +31,10 @@ PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = 'django-insecure-=00^r)(zo$4ae6%citn+fov3t3do*^$7l+3@35#uak9lbw$nip'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+# DEBUG = False # hii ndo iliyokuwepo..
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '206.189.115.23', '*']
 
 
 # Application definition
@@ -49,14 +50,20 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'django.contrib.staticfiles',
     'StudentHouse.api',
+    'corsheaders',
     'StudentHouse.user',
     'StudentHouse.organization',
     'StudentHouse.parent',
+    'whitenoise.runserver_nostatic',
+    'storages', # hii ndo nimeiongezea..
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -95,6 +102,10 @@ DATABASES = {
     }
 }
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -132,13 +143,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -177,6 +193,14 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# make sure you logged in using this account before using this service otherwise you will get this error 'socket.gaierrorsocket.gaierror: [Errno -2] Name or service not known'
+EMAIL_HOST_USER = 'paschalnzwanga2015@gmail.com'
+EMAIL_HOST_PASSWORD = 'lchobawtmrxfcsjm'
+
 
 
 AUTH_USER_MODEL = 'register.CustomUser' # https://stackoverflow.com/questions/49189402/auth-user-groups-fields-e304-reverse-accessor-for-user-groups-clashes-with
@@ -189,3 +213,10 @@ AUTH_USER_MODEL = 'register.CustomUser' # https://stackoverflow.com/questions/49
     added intitially before anything... For more just go and see your book from page 559 django unleashed
     
 '''
+# added by me
+# AWS_ACCESS_KEY_ID = 'AKIAV7L6M4ZSDJWEHV5U'
+# AWS_SECRET_ACCESS_KEY = 'oe6S5JyT4fZQU4iWEhIMwKAVb4O3+vv0KOb8Ni2B'
+# AWS_STORAGE_BUCKET_NAME = 'personalyzer'
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

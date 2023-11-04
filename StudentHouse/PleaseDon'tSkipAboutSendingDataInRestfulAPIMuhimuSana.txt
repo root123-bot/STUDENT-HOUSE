@@ -1,0 +1,48 @@
+
+'''
+    Hata kwenye postman unavyosend data haikubali utumie single quotes in any area the same to restful api....
+    for example i want to send stringified array which inside it containing the string, lets say i used ..
+     {"data": '[{"1": "present"}, {"2": "absent"}]'}
+    hii itakataa kusend coz every data you should send by using "" double quotes and ili niifanye my array to
+    look like the stringified one i need to enclose it inside the double quotes..NA ISHU INAYOJITOKEZA NI KWAMBA
+    YOU CAN'T HAVE THE DUPLICATED DOUBLE QOUTE LIKE THIS 
+        >>> "{"data": "[{"1": "present"}, {"2": "absent"}]"}"
+    Hichi kitu hakiruhusiwi na ndo maana in last testing of your api when you send the data to the server
+    ulikuwa unaget {"detail": "JSON parse error - Expecting value: line 1 column 1 (char 0)"} coz inashindwa kujua
+    au ku-convert your data like this of "{"data": "[{"1": "present"}, {"2": "absent"}]"}" to the array...
+    so hapa ili kuweza ku-send data of stringified array or objects/dictionary you should not have string
+    ... ko kwa mfano hapa nilikua nataka kusend data of stringified array which inside it containing the string like
+    this here in to create my subtopic... {1: "present"}, {2: "absent"}] hii ili nii-stringify ni-isend inakuwa ngumu
+    coz inakuwa inaonekana hivi ili uistringify '{1: "present"}, {2: "absent"}]' na hii itakataa ku-send/parse coz
+    unavyo-send haihitaji wewe kutumia single quotes in any area, na endapo ukisema labda unataka utumie double 
+    quotes kama wanavyotaka pia inakuwa syntax error coz you have duplicates of the double quotes in your data
+    "{1: "present"}, {2: "absent"}]", na endapo utasema basi nisend kama hivi
+    "[{1: present}, {2: absent}]" hii itakataa kusend coz inakuwa inaonekana absent and presents are keywords..
+    na hii ndo law on how restful api work if you receive JSON.parse error it means you tried to send single quoted string 
+    NA HAPA NDO ERROR IN YOUR INTERFACE OF DJANGO RESTFUL API INAPOTOKEA BUT IF YOU TRIED TO SEND SINGLE QOUTED STRING
+    IN POSTMAN ITAKATAA KU-SEND YAANI HAITO-SEND KABISA COZ INA-VALIDATE KABISA... NISHAELEWA HOW THINGS WORKS IN RESTFUL API 
+    NA ITAKUWA VIGUMU SANA KUPATA ERROR YA DIZAINI HII.. HII YA 'detail': 'JSON parse error - Expecting value: line 1 column 1 (char 0)'
+    Ko kwa hapa coz nataka ni-send status ya mwanafunzi inabidi nii-hardcode in my backend and ni-send integer coz inakuwa 
+    rahisi ku-send integer coz ina-ondoa duplicated double quotes ko hapa kwa mfano naweza in my backend nika-hardcode
+    status as 
+        1 = present
+        2 = absent
+        3 = late
+        4 = excused
+        5 = absent with excuse
+        6 = absent without excuse
+        7 = absent with medical excuse
+        8 = absent with medical excuse
+    
+    Ko endapo mtu atasend data of id of mwanafunzi na number ya status itakuwa rahisi kujua
+    yaani "[{28: 8}, {12: 2}]" hii itakataa kusend coz inakuwa inaonekana absent and presents are keywords..
+
+
+    But hii error inatokea if you send data manually like using the RESTful API Interface of Django/Postman coz it have no 
+    ability to decode the data containing the string.. but if you have language like Javascript it have JSON.stringify for this
+    purpose BUT SIO LANGUAGE ZOTE ZINAHII ABILITY YA KU-INCODE DATA VIZURI FLUTTER NAHISI INAYO ILA KAMA MTU HUIFAHAMU UTAPATA
+    TABU SANA KU-SEND DATA LIKE THIS WHICH HAVE STRINGS INSIDE IT NDO ITAKULAZIMU UTUMIE MECHANISM KAMA YANGU HAPO JUU YA
+    KU-HARDCODE NUMBER FOR GIVEN VALUE..BUT ALL IN ALL NISHAJUA HII ERROR KWANINI INATOKEA NA HII NI KUTOKANA NA KU-ANGALIA HOW 
+    POSTMAN WORK ON SENDING DATA OF ARRAY/OBJECTS CONTAINING THE STRINGS INSIDE IT...
+    ALL IN ALL NIMEJUA WHAT'S HAPPENED..
+'''

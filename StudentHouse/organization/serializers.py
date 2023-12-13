@@ -154,6 +154,7 @@ class MzaziSerializer(serializers.ModelSerializer):
         model = MzaziProfile
         fields = [
             'id',
+            'name',
             'category',
             'get_students',
             'profile_is_completed',

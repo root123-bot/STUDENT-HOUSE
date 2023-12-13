@@ -1,6 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from StudentHouse.organization.models import *
+from StudentHouse.api.models import *
+from StudentHouse.api.serializers import *
 from django.contrib.auth import get_user_model
 from StudentHouse.organization.serializers import *
 import datetime
@@ -923,6 +925,17 @@ class InstituteProfileAPI(APIView):
                         profile.logo = logo
                     
                     profile.isComplete = True
+
+                    # IF YOU COMPLETE THE PROFILE LETS GIVE YOU FREE 3 MONTH PAYMENT
+                    payment = PaymentRecord.objects.create(
+                        start_date = datetime.datetime.now(),
+                        end_date = datetime.datetime.now() + datetime.timedelta(days=90),
+                        mode = 'FREE',
+                        user = user
+                    )
+
+                    payment.save()
+
                     profile.save()
                     return Response({"success": "Profile updated successfully"})
                 else:

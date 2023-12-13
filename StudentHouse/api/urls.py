@@ -10,10 +10,14 @@ from rest_framework_simplejwt.views import (
 from StudentHouse.api.views import *
 
 urlpatterns = [
+    url(r'userpayments/$', user_payments, name="user_payments"),
+    # url('dashboard/$', dashboard, name='dashboard'),
     # path("password-reset/<str:encoded_pk>/<str:token>/", ResetPassword.as_view(), name='reset-password'),  # Hii baadae tutaibadilisha...
-    url(r'payment/$', payment, name="payment"),
-    url(r'pure/$', pure_push, name="pure_push"), # this is the one creating the order and push ussd for user to pay
+    # url(r'payment/$', payment, name="payment"),
+    url(r'pure/$', pure_push, name="pure_push"),
+    # url(r'samplecode/$', sample_code, name="samplecode"),
     url(r'malipocallback/$', payment_callback, name="pyment_callback"),
+    # url(r'pushussd/$', push_ussd_payment, name="pushussd"),
     url(r'password_reset/$', password_reset, name="password_reset_api"),
     url(r'deleteoldevents/$', delete_old, name="deleteoldevents"),
     url(r'deleteexcuse/$', delete_excuse, name="deleteexcuse"),

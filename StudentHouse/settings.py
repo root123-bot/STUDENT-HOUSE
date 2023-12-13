@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-=00^r)(zo$4ae6%citn+fov3t3do*^$7l+3@35#uak9lbw$nip
 # DEBUG = False # hii ndo iliyokuwepo..
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '206.189.115.23', '*']
+ALLOWED_HOSTS = ['localhost', '206.189.115.23', '138.197.114.27']
 
 
 # Application definition
@@ -102,10 +102,11 @@ DATABASES = {
     }
 }
 
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-]
+# CORS_ALLOWED_ORIGINS = [
+#    '*'
+#]
 
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -205,13 +206,13 @@ EMAIL_HOST_PASSWORD = 'lchobawtmrxfcsjm'
 
 AUTH_USER_MODEL = 'register.CustomUser' # https://stackoverflow.com/questions/49189402/auth-user-groups-fields-e304-reverse-accessor-for-user-groups-clashes-with
 '''
-    hii custom user who sign with email inakushinda kila siku, sasa sikia siri yake ni kwamba inabidi 
-    u-add kule hiyo model and custom user in register app then you should come here and add this 
+    hii custom user who sign with email inakushinda kila siku, sasa sikia siri yake ni kwamba inabidi
+    u-add kule hiyo model and custom user in register app then you should come here and add this
     AUTH_USER_MODEL, then hii auth_user_model itakuletea error kuwa CustomUser is not migrated what you need
-    to do is to go and makemigration of our custom user...  then after that you need to migrate all the 
-    data we told that the process of setting customuser which is absolute from that of django should be 
+    to do is to go and makemigration of our custom user...  then after that you need to migrate all the
+    data we told that the process of setting customuser which is absolute from that of django should be
     added intitially before anything... For more just go and see your book from page 559 django unleashed
-    
+
 '''
 # added by me
 # AWS_ACCESS_KEY_ID = 'AKIAV7L6M4ZSDJWEHV5U'

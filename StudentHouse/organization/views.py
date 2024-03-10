@@ -929,7 +929,7 @@ class InstituteProfileAPI(APIView):
                     # IF YOU COMPLETE THE PROFILE LETS GIVE YOU FREE 3 MONTH PAYMENT
                     payment = PaymentRecord.objects.create(
                         start_date = datetime.datetime.now(),
-                        end_date = datetime.datetime.now() + datetime.timedelta(days=90),
+                        end_date = datetime.datetime.now() + datetime.timedelta(days=500),
                         mode = 'FREE',
                         user = user
                     )

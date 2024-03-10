@@ -1286,8 +1286,8 @@ class EditMwalimu(APIView):
                 mwalimu.madarasa_anoyofundisha.clear()
                 madarasa = json.loads(madarasa_anayofundisha)
                 for darasa in madarasa:
-                    darasa = Darasa.objects.get(id=int(darasa))
-                    mwalimu.madarasa_anoyofundisha.add(darasa)
+                    venue = Darasa.objects.get(id=int(darasa))
+                    mwalimu.madarasa_anoyofundisha.add(venue)
 
 
             mwalimu.save()

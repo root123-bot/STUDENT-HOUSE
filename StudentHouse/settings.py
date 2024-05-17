@@ -212,9 +212,7 @@ AUTH_USER_MODEL = 'register.CustomUser' # https://stackoverflow.com/questions/49
     to do is to go and makemigration of our custom user...  then after that you need to migrate all the
     data we told that the process of setting customuser which is absolute from that of django should be
     added intitially before anything... For more just go and see your book from page 559 django unleashed also make sure that the
-    modal you defined the custom user is added before making migrations.. Just include "register" in installed app this will make it being
-    taken into the account when you make migrations otherwis it will be ignored just remember THIS IS FIRST THINGS
-    TO DO BEFORE MAKING AND RUNNING MIRATIONS AS INCLUDING IT MAKING THE CUSTOM USER BEING APPLIED
+    modal you defined the custom user is added before making migrations.. 
 
 '''
 # added by me

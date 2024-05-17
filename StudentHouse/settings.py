@@ -213,6 +213,14 @@ AUTH_USER_MODEL = 'register.CustomUser' # https://stackoverflow.com/questions/49
     data we told that the process of setting customuser which is absolute from that of django should be
     added intitially before anything... For more just go and see your book from page 559 django unleashed also make sure that the
     modal you defined the custom user is added before making migrations.. 
+    Thsi is what you should do after creating your custom user
+    >>> Delete sqlite3.sql if exist
+    >>> make migration file of your change in app defined your custom user... for me its defined inside models of "register" app
+    so we need to create migration file and we can do this through >>>  python3 manage.py makemigrations register
+    this explained in page 565 of 'Django Unleashed' book  just look at example 22.38: Shell Code
+    >>> after making migration go to settings.py and add/define your 'register' app inside the INSTALLED_APP and also define your
+    AUTH_USER_MODEL
+    >>> after that "migrate" all changes to be reflected on your DB
 
 '''
 # added by me
